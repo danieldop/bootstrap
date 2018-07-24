@@ -26,5 +26,23 @@ case ${OS_NAME} in
 export PATH=/usr/local/openresty/bin:/usr/local/openresty/nginx/sbin:\$PATH
 export PATH=/usr/local/openresty/luajit/bin:\$PATH
 END
+
+tee /lib/systemd/system/openresty.service << END
+[Unit]
+Description=The nginx HTTP and reverse proxy server
+After=syslog.target network.target remote-fs.target nss-lookup.target
+
+[Service]
+Type=forking
+PIDFile=/usr/local/openresty/nginx/logs/nginx.pid
+ExecStartPre=/usr/local/openresty/nginx/sbin/nginx -t
+ExecStart=/usr/local/openresty/nginx/sbin/nginx
+ExecReload=/bin/kill -s HUP $MAINPID
+ExecStop=/bin/kill -s QUIT $MAINPID
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+END
     ;;
 esac
