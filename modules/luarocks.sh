@@ -7,7 +7,7 @@ wget --directory-prefix=/tmp http://luarocks.org/releases/luarocks-${LUAROCKS_VE
 sudo tar -xzvf /tmp/luarocks-${LUAROCKS_VERSION}.tar.gz -C /opt
 cd /opt/luarocks-${LUAROCKS_VERSION}
 sudo ./configure ${LUAROCKS_CONFIG_FLAGS}
-sudo make && sudo make install
+sudo make -j4 && sudo make install -j4
 cd -
 
 ## gumbo-parser
@@ -15,14 +15,14 @@ sudo git clone git://github.com/google/gumbo-parser.git /opt/gumbo-parser/
 cd /opt/gumbo-parser/
 sudo ./autogen.sh
 sudo ./configure
-sudo make && sudo make install
+sudo make -j4 && sudo make install -j4
 cd -
 
 sudo /usr/bin/mkdir -p '/usr/local/include'
 sudo /usr/bin/install -c -m 644 /opt/gumbo-parser/src/gumbo.h /opt/gumbo-parser/src/tag_enum.h '/usr/local/include'
 sudo /usr/bin/mkdir -p '/usr/local/lib/pkgconfig'
 sudo /usr/bin/install -c -m 644 /opt/gumbo-parser/gumbo.pc '/usr/local/lib/pkgconfig'
-ln -s /usr/local/lib/libgumbo.so  /usr/local/openresty/luajit/lib/
+sudo ln -s /usr/local/lib/libgumbo*  /usr/local/openresty/luajit/lib/
 
 ## rocks
-sudo luarocks install gumbo
+luarocks install cx-gumbo

@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-# fedora
 sudo dnf -y install fedora-workstation-repositories
 sudo dnf config-manager --set-enabled google-chrome
 
@@ -17,3 +16,13 @@ repo_gpgcheck=0
 enabled=1
 enabled_metadata=1
 END
+
+sudo ${PACKAGE_MANAGER} -y install google-chrome-stable
+
+# snap
+sudo ${PACKAGE_MANAGER} -y install snapd
+sudo ln -s /var/lib/snapd/snap /snap
+
+sudo snap install telegram-desktop vlc atom spotify postman
+sudo snap install --classic slack
+sudo snap install --classic atom

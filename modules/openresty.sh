@@ -12,8 +12,10 @@ case ${OS_NAME} in
         sudo tar -xvf /tmp/openresty-${OPENRESTY_VERSION}.tar.gz -C /opt
         cd /opt/openresty-${OPENRESTY_VERSION}
         sudo ./configure ${OPENRESTY_CONFIG_FLAGS}
-        sudo make && sudo make install
+        sudo make -j4 && sudo make install -j4
         cd -
+
+        sudo mkdir -p /var/log/nginx
 
         export PATH=/usr/local/openresty/bin:/usr/local/openresty/nginx/sbin:$PATH
         export PATH=/usr/local/openresty/luajit/bin:$PATH

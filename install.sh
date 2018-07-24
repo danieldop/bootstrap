@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 export OS_FEDORA="FEDORA"
-export OS_AMAZON_LINUX="OS_AMAZON_LINUX"
+export OS_AMAZON_LINUX="AMAZON_LINUX"
 
 if [ -f /etc/os-release ]; then
     . /etc/os-release
@@ -37,23 +37,8 @@ fi
 echo "os: ${OS_NAME}, version: ${OS_VERSION}"
 
 sudo ${PACKAGE_MANAGER} -y group install "Development Tools" "C Development Tools and Libraries"
-sudo ${PACKAGE_MANAGER} -y install google-chrome-stable ruby-devel rubygem-rake wget make openssl-devel git \
+sudo ${PACKAGE_MANAGER} -y install ruby-devel rubygem-rake wget make openssl-devel git \
  zlib-devel readline-devel sqlite-devel bzip2-devel python-devel mlocate zopfli pigz htop iftop iotop \
  bash-completion gvim jq tree docker iptraf libtool automake autoconf m4 systemtap-sdt-devel libffi-devel
 
- updatedb
-
-# snap
-sudo ${PACKAGE_MANAGER} -y install snapd
-sudo ln -s /var/lib/snapd/snap /snap
-
-sudo snap install telegram-desktop vlc atom spotify postman
-sudo snap install --classic slack
-sudo snap install --classic atom
-
-# modules
-#./modules/java.sh
-#./modules/node.sh
-#./modules/openresty.sh
-#./modules/lua.sh
-#./modules/misc.sh
+updatedb
