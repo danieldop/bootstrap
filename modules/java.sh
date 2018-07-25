@@ -3,8 +3,6 @@
 readonly JDK_VERSION='jdk-10.0.2'
 readonly JDK_URL_VERSION='10.0.2+13'
 
-sudo ${PACKAGE_MANAGER} -y install wget maven
-
 wget --no-cookies --no-check-certificate --directory-prefix=/tmp --header "Cookie: oraclelicense=accept-securebackup-cookie" \
   http://download.oracle.com/otn-pub/java/jdk/${JDK_URL_VERSION}/19aef61b38124481863b1413dce1855f/${JDK_VERSION}_linux-x64_bin.tar.gz
 

@@ -3,8 +3,6 @@
 readonly PYTHON_2_VERSION='2.7.15'
 readonly PYTHON_3_VERSION='3.7.0'
 
-sudo ${PACKAGE_MANAGER} -y install git python-devel python-pip
-
 git clone git://github.com/yyuu/pyenv.git ~/.pyenv
 
 export PATH="$HOME/.pyenv/bin:$PATH"
