@@ -6,10 +6,10 @@ export OS_AMAZON_LINUX="AMAZON_LINUX"
 if [ -f /etc/os-release ]; then
     . /etc/os-release
     OS_NAME=${NAME}
-    OS_VERSION=${VERSION_ID}
+    export OS_VERSION=${VERSION_ID}
 elif type lsb_release >/dev/null 2>&1; then
     OS_NAME=$(lsb_release -si)
-    OS_VERSION=$(lsb_release -sr)
+    export OS_VERSION=$(lsb_release -sr)
 fi
 
 if [ -z "${OS_NAME}"  -o -z "${OS_VERSION}" ]; then
@@ -20,12 +20,12 @@ fi
 PACKAGE_MANAGER=''
 case "${OS_NAME}" in
     "Amazon Linux")
-        OS_NAME=${OS_AMAZON_LINUX}
-        PACKAGE_MANAGER=yum
+        export OS_NAME=${OS_AMAZON_LINUX}
+        export PACKAGE_MANAGER=yum
     ;;
     "Fedora")
-        OS_NAME=${OS_FEDORA}
-        PACKAGE_MANAGER=dnf
+        export OS_NAME=${OS_FEDORA}
+        export PACKAGE_MANAGER=dnf
     ;;
 esac
 
@@ -36,9 +36,11 @@ fi
 
 echo "os: ${OS_NAME}, version: ${OS_VERSION}"
 
+./modules/upgrade.sh
+
 sudo ${PACKAGE_MANAGER} -y group install "Development Tools" "C Development Tools and Libraries"
-sudo ${PACKAGE_MANAGER} -y install ruby-devel rubygem-rake wget make openssl-devel git \
+sudo ${PACKAGE_MANAGER} -y install ruby-devel rubygem-rake wget make openssl-devel git vim \
  zlib-devel readline-devel sqlite-devel bzip2-devel python-devel mlocate zopfli pigz htop iftop iotop \
  bash-completion gvim jq tree docker iptraf libtool automake autoconf m4 systemtap-sdt-devel libffi-devel
 
-updatedb
+sudo updatedb

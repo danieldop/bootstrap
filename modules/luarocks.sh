@@ -25,4 +25,4 @@ sudo /usr/bin/install -c -m 644 /opt/gumbo-parser/gumbo.pc '/usr/local/lib/pkgco
 sudo ln -s /usr/local/lib/libgumbo*  /usr/local/openresty/luajit/lib/
 
 ## rocks
-luarocks install cx-gumbo
+sudo /usr/local/openresty/luajit/bin/luarocks install cx-gumbo

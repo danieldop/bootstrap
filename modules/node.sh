@@ -22,7 +22,4 @@ export PATH=/usr/local/bin:\$PATH
 END
 
 # basics
-chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
-
-npm install node-gyp node-pre-gyp -g
-npm install pm2 -g
+sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
