@@ -27,7 +27,7 @@ export PATH=/usr/local/openresty/bin:/usr/local/openresty/nginx/sbin:\$PATH
 export PATH=/usr/local/openresty/luajit/bin:\$PATH
 END
 
-tee /lib/systemd/system/openresty.service << END
+        tee /lib/systemd/system/openresty.service << END
 [Unit]
 Description=The nginx HTTP and reverse proxy server
 After=syslog.target network.target remote-fs.target nss-lookup.target

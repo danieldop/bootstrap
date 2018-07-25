@@ -17,7 +17,7 @@ enabled=1
 enabled_metadata=1
 END
 
-sudo ${PACKAGE_MANAGER} -y install google-chrome-stable
+sudo ${PACKAGE_MANAGER} -y install google-chrome-stable terminator
 
 # snap
 sudo ${PACKAGE_MANAGER} -y install snapd
