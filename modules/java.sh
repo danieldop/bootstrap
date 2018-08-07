@@ -26,3 +26,19 @@ export JAVA_HOME=/opt/${JDK_VERSION}
 export JRE_HOME=/opt/${JDK_VERSION}/jre
 export PATH=\$PATH:/opt/${JDK_VERSION}/bin:/opt/${JDK_VERSION}/jre/bin
 END
+
+# gradle
+readonly GRADLE_VERSION='4.9'
+
+wget --no-cookies --no-check-certificate --directory-prefix=/tmp https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip
+sudo mkdir /opt/gradle
+sudo unzip -d /opt/gradle /tmp/gradle-${GRADLE_VERSION}-bin.zip
+export GRADLE_HOME=/opt/gradle/gradle-${GRADLE_VERSION}
+export PATH=$PATH:${GRADLE_HOME}/bin
+
+tee -a ~/.bash_profile << END
+
+# gradle
+export GRADLE_HOME=/opt/gradle/gradle-${GRADLE_VERSION}
+export PATH=\$PATH:${GRADLE_HOME}/bin
+END
