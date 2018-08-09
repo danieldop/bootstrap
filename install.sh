@@ -41,6 +41,6 @@ echo "os: ${OS_NAME}, version: ${OS_VERSION}"
 sudo ${PACKAGE_MANAGER} -y group install "Development Tools" "C Development Tools and Libraries"
 sudo ${PACKAGE_MANAGER} -y install ruby-devel rubygem-rake wget make openssl-devel git vim maven python-devel \
  python-pip zlib-devel readline-devel sqlite-devel bzip2-devel python-devel mlocate zopfli pigz htop iftop iotop \
- bash-completion gvim jq tree docker iptraf libtool automake autoconf m4 systemtap-sdt-devel libffi-devel
+ bash-completion gvim jq tree docker iptraf libtool-devel automake autoconf m4 systemtap-sdt-devel libffi-devel pcre-devel
 
 sudo updatedb
