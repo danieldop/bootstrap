@@ -1,46 +1,61 @@
 #!/usr/bin/env bash
 
-export OS_FEDORA="FEDORA"
-export OS_AMAZON_LINUX="AMAZON_LINUX"
+# Install Brew
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew update && brew upgrade
 
-if [ -f /etc/os-release ]; then
-    . /etc/os-release
-    OS_NAME=${NAME}
-    export OS_VERSION=${VERSION_ID}
-elif type lsb_release >/dev/null 2>&1; then
-    OS_NAME=$(lsb_release -si)
-    export OS_VERSION=$(lsb_release -sr)
-fi
+# Install Zshell
+brew install zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+brew install fzf && $(brew --prefix)/opt/fzf/install
 
-if [ -z "${OS_NAME}"  -o -z "${OS_VERSION}" ]; then
-    echo "OS_NAME or OS_VERSION could not be determined, exiting"
-    exit 1
-fi
+# Install GnuPG to enable PGP-signing commits.
+brew install gnupg
 
-PACKAGE_MANAGER=''
-case "${OS_NAME}" in
-    "Amazon Linux")
-        export OS_NAME=${OS_AMAZON_LINUX}
-        export PACKAGE_MANAGER=yum
-    ;;
-    "Fedora")
-        export OS_NAME=${OS_FEDORA}
-        export PACKAGE_MANAGER=dnf
-    ;;
-esac
+# Install more recent versions of some macOS tools.
+brew install macvim grep openssh screen coreutils moreutils findutils gnu-sed
+# Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
 
-if [ -z "${PACKAGE_MANAGER}" ]; then
-    echo "OS not supported, exiting"
-    exit 1
-fi
+# Install font tools.
+brew tap bramstein/webfonttools
+brew install sfnt2woff sfnt2woff-zopfli woff2
 
-echo "os: ${OS_NAME}, version: ${OS_VERSION}"
+# Powerline Fonts
+git clone https://github.com/powerline/fonts.git --depth=1
+cd fonts && ./install.sh
+cd .. && rm -rf fonts
 
-./modules/upgrade.sh
+# Install some CTF tools; see https://github.com/ctfs/write-ups.
+brew install aircrack-ng bfg binutils binwalk cifer dex2jar dns2tcp fcrackzip foremost \
+	hashpump hydra john knock netpbm nmap pngcheck socat sqlmap tcpflow tcpreplay \
+	tcptrace ucspi-tcp xpdf xz wget
 
-sudo ${PACKAGE_MANAGER} -y group install "Development Tools" "C Development Tools and Libraries"
-sudo ${PACKAGE_MANAGER} -y install ruby-devel rubygem-rake wget make openssl-devel git vim maven python-devel \
- python-pip zlib-devel readline-devel sqlite-devel bzip2-devel python-devel mlocate zopfli pigz htop iftop iotop \
- bash-completion gvim jq tree docker iptraf libtool-devel automake autoconf m4 systemtap-sdt-devel libffi-devel pcre-devel
+# Install other useful binaries.
+brew install ack git git-lfs imagemagick lua lynx p7zip pigz pv rename rlwrap \
+	ssh-copy-id tree vbindiff zopfli jq htop circleci
 
-sudo updatedb
+# Install k8s tools
+brew install kops kubernetes-cli kubernetes-helm stern
+## Zsh namespace prompt
+brew tap superbrothers/zsh-kubectl-prompt
+brew install zsh-kubectl-prompt
+git clone https://github.com/ahmetb/kubectl-aliases.git --depth=1
+mv kubectl-aliases/.kubectl-aliases ${HOME} && rm -rf kubectl-aliases
+echo "[ -f ~/.kubectl_aliases ] && source ~/.kubectl_aliases" >> ${HOME}/.zshrc
+## Telepresence
+brew cask install osxfuse
+brew install datawire/blackbird/telepresence
+
+# Install Mongo
+brew tap mongodb/brew
+brew install mongodb-community
+
+# Install Java8
+brew tap caskroom/versions
+brew cask install java8
+
+# Remove outdated versions from the cellar.
+brew cleanup
+
+# Install Janus VIM
+curl -L https://bit.ly/janus-bootstrap | bash
