@@ -12,8 +12,6 @@ function doIt() {
 		--exclude "README.md" \
 		--exclude "LICENSE-MIT.txt" \
 		-avh --no-perms . ~;
-	mkLogDir;
-	install;
 }
 
 function mkLogDir() {
@@ -27,6 +25,8 @@ function install() {
 
 if [[ "$1" == "--force" || "$1" == "-f" ]]; then
 	doIt;
+	mkLogDir;
+	install;
 else
 	read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
 	echo "";
