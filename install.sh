@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
 
-# Install Brew
+# Update Brew
 brew update && brew upgrade
-
-# Install Zshell
-brew install zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-brew install fzf && $(brew --prefix)/opt/fzf/install
+brew tap caskroom/cask
+brew tap homebrew/services
 
 # Install GnuPG to enable PGP-signing commits.
 brew install gnupg
@@ -19,10 +16,6 @@ brew install macvim grep openssh screen coreutils moreutils findutils gnu-sed
 brew tap bramstein/webfonttools
 brew install sfnt2woff sfnt2woff-zopfli woff2
 
-# Powerline Fonts
-git clone https://github.com/powerline/fonts.git --depth=1
-cd fonts && ./install.sh
-cd .. && rm -rf fonts
 
 # Install some CTF tools; see https://github.com/ctfs/write-ups.
 brew install aircrack-ng bfg binutils binwalk cifer dex2jar dns2tcp fcrackzip foremost \
@@ -32,6 +25,7 @@ brew install aircrack-ng bfg binutils binwalk cifer dex2jar dns2tcp fcrackzip fo
 # Install other useful binaries.
 brew install ack git git-lfs imagemagick lua lynx p7zip pigz pv rename rlwrap \
 	ssh-copy-id tree vbindiff zopfli jq htop circleci
+brew cask install docker
 
 # Install k8s tools
 brew install kops kubernetes-cli kubernetes-helm stern
@@ -39,8 +33,9 @@ brew install kops kubernetes-cli kubernetes-helm stern
 brew tap superbrothers/zsh-kubectl-prompt
 brew install zsh-kubectl-prompt
 git clone https://github.com/ahmetb/kubectl-aliases.git --depth=1
-mv kubectl-aliases/.kubectl-aliases ${HOME} && rm -rf kubectl-aliases
+mv kubectl-aliases/.kubectl_aliases ${HOME}
 echo "[ -f ~/.kubectl_aliases ] && source ~/.kubectl_aliases" >> ${HOME}/.zshrc
+rm -rf ./kubectl-aliases
 ## Telepresence
 brew cask install osxfuse
 brew install datawire/blackbird/telepresence
@@ -48,6 +43,11 @@ brew install datawire/blackbird/telepresence
 # Install Mongo
 brew tap mongodb/brew
 brew install mongodb-community
+sudo mkdir -p /data/db
+sudo chown -R `{whoami}`: /data/db
+
+# Install Mysql
+brew install mysql
 
 # Install Java8
 brew tap caskroom/versions
@@ -56,5 +56,17 @@ brew cask install java8
 # Remove outdated versions from the cellar.
 brew cleanup
 
+# Powerline Fonts
+git clone https://github.com/powerline/fonts.git --depth=1
+cd fonts && ./install.sh
+cd .. && rm -rf fonts
+
 # Install Janus VIM
 curl -L https://bit.ly/janus-bootstrap | bash
+
+# Apply DotFiles
+for file in ~/.{path,exports,aliases,functions,extra,path}; do
+	[[ -r "$file" ]] && [[ -f "$file" ]] && source "$file";
+done;
+unset file;
+

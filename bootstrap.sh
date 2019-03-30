@@ -7,18 +7,21 @@ git pull origin master;
 function doIt() {
 	rsync --exclude ".git/" \
 		--exclude ".gitignore" \
+		--exclude ".ediorconfig" \
 		--exclude ".linux-modules/" \
 		--exclude ".idea/" \
 		--exclude "bootstrap.iml" \
 		--exclude ".DS_Store" \
 		--exclude "bootstrap.sh" \
 		--exclude "install.sh" \
+		--exclude "zsh.sh" \
 		--exclude "README.md" \
 		-avh --no-perms . ~;
 }
 
 function mkLogDir() {
 	sudo mkdir -p /var/log
+	sudo chown -R `{whoami}`: /var/log
 }
 
 function install() {
