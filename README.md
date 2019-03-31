@@ -1,6 +1,4 @@
-# Daniel’s bootstrap & dotfiles
-
-![Screenshot of my shell prompt](https://i.imgur.com/EkEtphC.png)
+# bootstrap & dotfiles
 
 ## Installation
 
@@ -76,6 +74,11 @@ When setting up a new Mac, you may want to set some sensible macOS defaults:
 ### Install formulae
 
 When setting up a new Mac, you may want to install some common [Homebrew](https://brew.sh/) formulae (after installing Homebrew, of course):
+
+```bash
+# install zshell
+./zsh.sh
+```
 
 ```bash
 ./install.sh
