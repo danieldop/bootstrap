@@ -74,7 +74,7 @@ cd .. && rm -rf fonts
 curl -L https://bit.ly/janus-bootstrap | bash
 
 # Apply DotFiles
-for file in ~/.{path,exports,aliases,functions,extra,path}; do
+for file in ~/.{path,exports,aliases,functions,extra}; do
 	[[ -r "$file" ]] && [[ -f "$file" ]] && source "$file";
 done;
 unset file;
