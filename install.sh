@@ -32,6 +32,12 @@ brew install kops kubernetes-cli kubernetes-helm stern
 ## kubectl zsh namespace prompt
 brew tap superbrothers/zsh-kubectl-prompt
 brew install zsh-kubectl-prompt
+tee -a ${HOME}/.zshrc << END
+autoload -U colors; colors
+source /usr/local/etc/zsh-kubectl-prompt/kubectl.zsh
+RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
+END
+# TODO install in ~/.zshrc
 ## kubectl aliases
 git clone https://github.com/ahmetb/kubectl-aliases.git --depth=1
 mv kubectl-aliases/.kubectl_aliases ${HOME}
@@ -72,4 +78,3 @@ for file in ~/.{path,exports,aliases,functions,extra,path}; do
 	[[ -r "$file" ]] && [[ -f "$file" ]] && source "$file";
 done;
 unset file;
-
