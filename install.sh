@@ -36,6 +36,8 @@ git clone https://github.com/ahmetb/kubectl-aliases.git --depth=1
 mv kubectl-aliases/.kubectl_aliases ${HOME}
 echo "[ -f ~/.kubectl_aliases ] && source ~/.kubectl_aliases" >> ${HOME}/.zshrc
 rm -rf ./kubectl-aliases
+## Namespace selector
+curl https://raw.githubusercontent.com/blendle/kns/master/bin/kns -o /usr/local/bin/kns && chmod +x $_
 ## Telepresence
 brew cask install osxfuse
 brew install datawire/blackbird/telepresence
