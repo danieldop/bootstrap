@@ -29,14 +29,15 @@ brew cask install docker
 
 # Install k8s tools
 brew install kops kubernetes-cli kubernetes-helm stern
-## Zsh namespace prompt
+## kubectl zsh namespace prompt
 brew tap superbrothers/zsh-kubectl-prompt
 brew install zsh-kubectl-prompt
+## kubectl aliases
 git clone https://github.com/ahmetb/kubectl-aliases.git --depth=1
 mv kubectl-aliases/.kubectl_aliases ${HOME}
 echo "[ -f ~/.kubectl_aliases ] && source ~/.kubectl_aliases" >> ${HOME}/.zshrc
 rm -rf ./kubectl-aliases
-## Namespace selector
+## kubectl namespace selector
 curl https://raw.githubusercontent.com/blendle/kns/master/bin/kns -o /usr/local/bin/kns && chmod +x $_
 ## Telepresence
 brew cask install osxfuse
