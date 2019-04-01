@@ -24,7 +24,7 @@ brew install aircrack-ng bfg binutils binwalk cifer dex2jar dns2tcp fcrackzip fo
 
 # Install other useful binaries.
 brew install ack git git-lfs imagemagick lua lynx p7zip pigz pv rename rlwrap \
-	ssh-copy-id tree vbindiff zopfli jq htop circleci
+	ssh-copy-id tree vbindiff zopfli jq htop circleci terraform
 brew cask install docker
 
 # Install k8s tools
