@@ -60,7 +60,7 @@ brew install datawire/blackbird/telepresence
 brew tap mongodb/brew
 brew install mongodb-community
 sudo mkdir -p /data/db
-sudo chown -R `{whoami}`: /data/db
+sudo chown -R $(whoami): /data/db
 
 # Install Mysql
 brew install mysql
