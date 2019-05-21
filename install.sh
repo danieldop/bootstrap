@@ -20,11 +20,11 @@ brew install sfnt2woff sfnt2woff-zopfli woff2
 # Install some CTF tools; see https://github.com/ctfs/write-ups.
 brew install aircrack-ng bfg binutils binwalk cifer dex2jar dns2tcp fcrackzip foremost \
 	hashpump hydra john knock netpbm nmap pngcheck socat sqlmap tcpflow tcpreplay \
-	tcptrace ucspi-tcp xpdf xz wget
+	tcptrace ucspi-tcp xpdf xz wget libxml2 libxslt libiconv
 
 # Install other useful binaries.
 brew install ack git git-lfs imagemagick lua lynx p7zip pigz pv rename rlwrap \
-	ssh-copy-id tree vbindiff zopfli jq htop circleci terraform
+	ssh-copy-id tree vbindiff zopfli jq htop circleci terraform npm node
 brew cask install docker
 
 # Install k8s tools
