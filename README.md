@@ -30,20 +30,24 @@ If you're interested in automation, `bootstrap` provides a customizable [setup s
 **Since you probably don't want to install every section**, the `.dots` script supports command line arguments to run only specified sections.  Simply pass in the [scripts](#scripts) that you want to install.  Below are some examples.
 
 Run all:
-
-    $ ./.dots all
+```bash
+./.dots all
+```
 
 Run `bootstrap.sh`, `osxprep.sh`, `brew.sh`, and `osx.sh`:
-
-    $ ./.dots bootstrap osxprep brew osx
+```bash
+./.dots bootstrap osxprep brew osx
+```
 
 Run `bootstrap.sh`, `osxprep.sh`, `brew.sh`, and `osx.sh`, `pydata.sh`, `aws.sh`, and `datastores.sh`:
-
-    $ ./.dots bootstrap osxprep brew osx pydata aws datastores
+```bash
+./.dots bootstrap osxprep brew osx pydata aws datastores
+```
 
 #### Running without Git
-
-    $ curl -O https://raw.githubusercontent.com/danieldop/bootstrap/master/.dots && ./.dots [Add ARGS Here]
+```bash
+curl -O https://raw.githubusercontent.com/danieldop/bootstrap/master/.dots && chown $(whoami): .dots && chmod +x .dots && ./.dots [Add ARGS Here]
+```
 
 #### Scripts
 
@@ -75,5 +79,3 @@ Run `bootstrap.sh`, `osxprep.sh`, `brew.sh`, and `osx.sh`, `pydata.sh`, `aws.sh`
     * Once Xcode is installed, follow the instructions on the terminal to continue.
 * `.dots` runs `brew.sh`, which takes awhile to complete as some formulae need to be installed from source.
 * **When `.dots` completes, be sure to restart your computer for all updates to take effect.**
-
-I encourage you to read through Section 1 so you have a better idea of what each installation script does.  The following discussions describe in greater detail what is executed when running the [.dots](https://github.com/danieldop/bootstrap/blob/master/.dots) script.
