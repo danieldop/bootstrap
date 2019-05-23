@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Install command-line tools using Homebrew.
+
 # Ask for the administrator password upfront.
 sudo -v
 
@@ -16,17 +18,12 @@ fi
 # Make sure we’re using the latest Homebrew.
 brew update
 
-# Install script dependencies
-brew install curl
+# Install Java
+brew install \
+ java \
+ gradle \
+ maven
 
-# Install z-shell
-brew install zsh
-
-# Change to the new shell, prompts for password
-chsh -s $(which zsh)
-
-# Install Oh My Zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
-# Install fuzzy search
-brew install fzf && $(brew --prefix)/opt/fzf/install
+# Install Java8
+brew tap caskroom/versions
+brew cask install java8

@@ -16,17 +16,15 @@ fi
 # Make sure we’re using the latest Homebrew.
 brew update
 
-# Install script dependencies
-brew install curl
+# Install Bash 4.
+brew install bash
+brew install bash-completion2
 
-# Install z-shell
-brew install zsh
+# We installed the new shell, now we have to activate it
+echo "Adding the newly installed shell to the list of allowed shells"
+
+# Prompts for password
+sudo bash -c 'echo /usr/local/bin/bash >> /etc/shells'
 
 # Change to the new shell, prompts for password
-chsh -s $(which zsh)
-
-# Install Oh My Zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
-# Install fuzzy search
-brew install fzf && $(brew --prefix)/opt/fzf/install
+chsh -s /usr/local/bin/bash

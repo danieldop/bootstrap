@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+
+# Install command-line tools using Homebrew.
+
 # Ask for the administrator password upfront.
 sudo -v
 
@@ -16,17 +19,16 @@ fi
 # Make sure we’re using the latest Homebrew.
 brew update
 
-# Install script dependencies
-brew install curl
+# Install data stores
+brew install mysql
+brew install mongo
+brew install redis
+brew install elasticsearch
 
-# Install z-shell
-brew install zsh
+# Install Sequel Pro and RoboMongo
+# Install Cask
+brew install caskroom/cask/brew-cask
+brew cask install --appdir="/Applications" sequel-pro robo-3t
 
-# Change to the new shell, prompts for password
-chsh -s $(which zsh)
-
-# Install Oh My Zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
-# Install fuzzy search
-brew install fzf && $(brew --prefix)/opt/fzf/install
+# Remove outdated versions from the cellar.
+brew cleanup

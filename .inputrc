@@ -1,11 +1,11 @@
 # Make Tab autocomplete regardless of filename case
-#set completion-ignore-case on
+set completion-ignore-case on
 
 # List all matches in case multiple possible completions are possible
-#set show-all-if-ambiguous on
+set show-all-if-ambiguous on
 
 # Immediately add a trailing slash when autocompleting symlinks to directories
-#set mark-symlinked-directories on
+set mark-symlinked-directories on
 
 # Use the text that has already been typed as the prefix for searching through
 # commands (i.e. more intelligent Up/Down behavior)
@@ -13,7 +13,7 @@
 "\e[A": history-search-backward
 
 # Do not autocomplete hidden files unless the pattern explicitly begins with a dot
-#set match-hidden-files off
+set match-hidden-files off
 
 # Show all autocomplete results at once
 set page-completions off
@@ -29,7 +29,7 @@ set visible-stats on
 # the cursor is on the "z", pressing Tab will not autocomplete it to "cd
 # ~/src/mozillail", but to "cd ~/src/mozilla". (This is supported by the
 # Readline used by Bash 4.)
-#set skip-completed-text on
+set skip-completed-text on
 
 # Allow UTF-8 input and output, instead of showing stuff like $'\0123\0456'
 set input-meta on
