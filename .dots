@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+DIR=${HOME}/dev/bootstrap
+
 function runDots() {
     # Ask for the administrator password upfront
     sudo -v
@@ -12,20 +14,22 @@ function runDots() {
     do
         if [ $ARG == "bootstrap" ] || [ $ARG == "all" ]; then
             echo ""
-            echo "------------------------------"
-            echo "Syncing the dev-setup repo to your local machine."
-            echo "------------------------------"
+            echo "-------------------------------------------------"
+            echo "Syncing the bootstrap repo to your local machine."
+            echo "-------------------------------------------------"
             echo ""
-            cd ~ && curl -#L https://github.com/danieldop/bootstrap/tarball/master | tar -xzv --strip-components 1 --exclude={README.md,LICENSE}
+            mkdir -p ${DIR}
+            curl -L https://github.com/danieldop/bootstrap/tarball/master | tar -xzv --strip-components 1 --exclude={README.md,CREDITS.md} -C ${DIR}
+            chown -R $(whoami): ${DIR}
         fi
         if [ $ARG == "osxprep" ] || [ $ARG == "all" ]; then
             # Run the osxprep.sh Script
             echo ""
-            echo "------------------------------"
+            echo "----------------------------------------------------"
             echo "Updating OSX and installing Xcode command line tools"
-            echo "------------------------------"
+            echo "----------------------------------------------------"
             echo ""
-            ./osxprep.sh
+            ${DIR}/osxprep.sh
         fi
         if [ $ARG == "brew" ] || [ $ARG == "all" ]; then
             # Run the brew.sh Script
@@ -33,82 +37,79 @@ function runDots() {
             # the commented brew.sh source file directly and tweak it to
             # suit your needs.
             echo ""
-            echo "------------------------------"
+            echo "-------------------------------------------------------------"
             echo "Installing Homebrew along with some common formulae and apps."
-            echo "This might take a while to complete, as some formulae need to be installed from source."
-            echo "------------------------------"
+            echo "-------------------------------------------------------------"
             echo ""
-            ./brew.sh
+            ${DIR}/brew.sh
         fi
-        if [ $ARG == "zshell" ] || [ $ARG == "all" ]; then
+        if [ $ARG == "zsh" ] || [ $ARG == "all" ]; then
 			# Run the zsh.sh Script
 			echo ""
-			echo "------------------------------"
+			echo "----------------------------"
 			echo "Install Zshell and Oh-My-Zsh"
-			echo "------------------------------"
+			echo "----------------------------"
 			echo ""
-			./zsh.sh
+			${DIR}/zsh.sh
 		fi
         if [ $ARG == "osx" ] || [ $ARG == "all" ]; then
             # Run the osx.sh Script
             # I strongly suggest you read through the commented osx.sh
             # source file and tweak any settings based on your personal
             # preferences. The script defaults are intended for you to
-            # customize. For example, if you are not running an SSD you
-            # might want to change some of the settings listed in the
-            # SSD section.
+            # customize.
             echo ""
             echo "------------------------------"
             echo "Setting sensible OSX defaults."
             echo "------------------------------"
             echo ""
-            ./osx.sh
+            ${DIR}/osx.sh
         fi
         if [ $ARG == "aws" ] || [ $ARG == "all" ]; then
             # Run the aws.sh Script
-            echo "------------------------------"
+            echo "---------------------------------------"
             echo "Setting up AWS development environment."
-            echo "------------------------------"
+            echo "---------------------------------------"
             echo ""
-            ./aws.sh
+            ${DIR}/aws.sh
         fi
         if [ $ARG == "datastores" ] || [ $ARG == "all" ]; then
             # Run the datastores.sh Script
-            echo "------------------------------"
+            echo "-----------------------"
             echo "Setting up data stores."
-            echo "------------------------------"
+            echo "-----------------------"
             echo ""
-            ./datastores.sh
+            ${DIR}/datastores.sh
         fi
         if [ $ARG == "web" ] || [ $ARG == "all" ]; then
             # Run the web.sh Script
-            echo "------------------------------"
+            echo "--------------------------------------------------"
             echo "Setting up JavaScript web development environment."
-            echo "------------------------------"
+            echo "--------------------------------------------------"
             echo ""
-            ./web.sh
+            ${DIR}/web.sh
         fi
         if [ $ARG == "server" ] || [ $ARG == "all" ]; then
-            # Run the web.sh Script
-            echo "------------------------------"
+            # Run the server.sh Script
+            echo "-----------------------------------------------"
             echo "Setting up Java/Kotlin development environment."
-            echo "------------------------------"
+            echo "-----------------------------------------------"
             echo ""
-            ./server.sh
+            ${DIR}/server.sh
         fi
         if [ $ARG == "ops" ] || [ $ARG == "all" ]; then
-            # Run the web.sh Script
-            echo "------------------------------"
+            # Run the ops.sh Script
+            echo "------------------------------------------"
             echo "Setting up DevOps development environment."
-            echo "------------------------------"
+            echo "------------------------------------------"
             echo ""
-            ./ops.sh
+            ${DIR}/ops.sh
         fi
     done
 
-    echo "------------------------------"
+    echo "---------------------------------------------------------------------------------"
     echo "Completed running .dots, restart your computer to ensure all updates take effect"
-    echo "------------------------------"
+    echo "---------------------------------------------------------------------------------"
 }
 
 read -p "This script may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;

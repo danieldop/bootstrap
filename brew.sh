@@ -16,10 +16,8 @@ if test ! $(which brew); then
 fi
 
 # Make sure we’re using the latest Homebrew.
-brew update
-
 # Upgrade any already-installed formulae.
-brew upgrade --all
+brew update && brew upgrade
 
 # Install GNU core utilities (those that come with OS X are outdated).
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
@@ -33,8 +31,8 @@ brew install findutils
 # Install GNU `sed`, overwriting the built-in `sed`.
 brew install gnu-sed
 
-# Install `wget` with IRI support.
-brew install wget --with-iri
+# Install `wget`
+brew install wget
 
 # Install Python
 brew install python
@@ -47,14 +45,15 @@ LINE='eval "$(rbenv init -)"'
 grep -q "$LINE" ~/.extra || echo "$LINE" >> ~/.extra
 
 # Install more recent versions of some OS X tools.
-brew install vim --override-system-vi
-brew install homebrew/dupes/grep
-brew install homebrew/dupes/openssh
-brew install homebrew/dupes/screen
+brew install \
+ vim \
+ grep \
+ openssh \
+ screen
 
 # Install font tools.
 brew tap bramstein/webfonttools
-brew install
+brew install \
  sfnt2woff \
  sfnt2woff-zopfli \
  woff2
@@ -87,7 +86,7 @@ brew install \
  tcpreplay \
  tcptrace \
  ucspi-tcp \
- homebrew/x11/xpdf \
+ xpdf \
  xz
 
 # Install other useful binaries.
@@ -118,12 +117,12 @@ brew install \
  jq \
  htop
 
-# Lxml and Libxslt
-brew install \
- libxml2 \
- libxslt
-brew link libxml2 --force
-brew link libxslt --force
+## Lxml and Libxslt
+#brew install \
+# libxml2 \
+# libxslt
+#brew link libxml2 --force
+#brew link libxslt --force
 
 # Core casks
 brew cask install --appdir="/Applications" alfred
