@@ -26,12 +26,12 @@ brew install terraform circleci go
 
 # Install k8s tools
 ## Install kops v1.11.1
-curl -Lo -s kops https://github.com/kubernetes/kops/releases/download/$K8S_VERSION/kops-darwin-amd64
+curl -Lo# -s kops https://github.com/kubernetes/kops/releases/download/$K8S_VERSION/kops-darwin-amd64
 chmod +x ./kops
 sudo mv ./kops /usr/local/bin/
 
 ## Install kubectl v1.11.1
-curl -LO -s https://storage.googleapis.com/kubernetes-release/release/v$K8S_VERSION/bin/darwin/amd64/kubectl
+curl -LO# -s https://storage.googleapis.com/kubernetes-release/release/v$K8S_VERSION/bin/darwin/amd64/kubectl
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 
