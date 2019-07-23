@@ -140,32 +140,10 @@ brew cask install --appdir="/Applications" virtualbox
 brew cask install --appdir="/Applications" macdown
 brew cask install --appdir="/Applications" postman
 brew cask install --appdir="/Applications" sourcetree
+brew cask install --appdir="/Applications" intellij-idea
 
 
 brew cask install --appdir="/Applications" gitter
-
-# Run sections based on command line arguments
-for ARG in "$@"
-do
-	if [[ $ARG == "server" ]] || [[ $ARG == "all" ]]; then
-		echo ""
-		echo "---------------------------------"
-		echo "Install Server Development Tools."
-		echo "---------------------------------"
-		echo ""
-		brew cask install --appdir="/Applications" intellij-idea
-
-	fi
-	if [[ $ARG == "web" ]] || [[ $ARG == "all" ]]; then
-		echo ""
-		echo "------------------------------"
-		echo "Install Web Development Tools."
-		echo "------------------------------"
-		echo ""
-		brew cask install --appdir="/Applications" webstorm
-		brew cask install --appdir="/Applications" vscodium # vs-code
-	fi
-done
 
 # Misc casks
 brew cask install --appdir="/Applications" google-chrome

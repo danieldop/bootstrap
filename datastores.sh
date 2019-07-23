@@ -21,7 +21,7 @@ brew update
 
 # Install data stores
 brew install mysql
-brew install mongo
+brew install mongo@3.6
 brew install redis
 brew install elasticsearch
 

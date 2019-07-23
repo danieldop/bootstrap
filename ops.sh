@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-K8S_VERSION=1.11.1
-HELM_VERSION=2.13.0
+K8S_VERSION=1.12.7
+HELM_VERSION=2.13.1
 
 # Install command-line tools using Homebrew.
 
