@@ -4,8 +4,9 @@ K8S_VERSION=1.14.8
 KOPS_VERSION=1.14.1
 HELM_VERSION=2.13.0
 
-# Install command-line tools using Homebrew.
+export RC_FILE=${HOME}/.zshrc
 
+# Install command-line tools using Homebrew.
 # Ask for the administrator password upfront.
 sudo -v
 
@@ -36,7 +37,7 @@ curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v$K8S
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 
-## Install helm v2.13.1
+## Install helm
 curl -LO -s https://storage.googleapis.com/kubernetes-helm/helm-v$HELM_VERSION-darwin-amd64.tar.gz
 tar -zxvf helm-v${HELM_VERSION}-darwin-amd64.tar.gz && rm helm-v${HELM_VERSION}-darwin-amd64.tar.gz
 sudo mv darwin-amd64/helm /usr/local/bin/helm
@@ -56,8 +57,13 @@ rm -rf ./kubectl-aliases
 ### kubectl namespace selector
 curl https://raw.githubusercontent.com/blendle/kns/master/bin/kns -o /usr/local/bin/kns && chmod +x $_
 
+## kubectl zsh namespace prompt
+brew tap superbrothers/zsh-kubectl-prompt
+brew install zsh-kubectl-prompt
+
 ## Helm plugins
 helm init --client-only
+helm plugin install https://github.com/hypnoglow/helm-s3.git
 helm plugin install https://github.com/mstrzele/helm-edit
 helm plugin install https://github.com/databus23/helm-diff --version master
 
@@ -65,11 +71,12 @@ helm plugin install https://github.com/databus23/helm-diff --version master
 brew cask install osxfuse
 brew install datawire/blackbird/telepresence
 
-export RC_FILE=~/.zshrc
+## kubectl zsh namespace prompt
+brew tap superbrothers/zsh-kubectl-prompt
+brew install zsh-kubectl-prompt
 
 # Finish installation into bash env
-echo "" >> ${RC_FILE}
-tee -a ${HOME}/.zshrc << END
+tee -a ${RC_FILE} << END
 
 # kubectl-aliases
 [[ -f ~/.kubectl_aliases ]] && source ~/.kubectl_aliases
@@ -77,6 +84,8 @@ tee -a ${HOME}/.zshrc << END
 # kubectl-prompt
 autoload -U colors; colors
 source /usr/local/etc/zsh-kubectl-prompt/kubectl.zsh
-RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
-END
+RPROMPT='%{$fg[red]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
 
+source <(kubectl completion zsh)  # setup autocomplete in zsh into the current shell
+echo "if [ $commands[kubectl] ]; then source <(kubectl completion zsh); fi" >> ~/.zshrc # add autocomplete permanently to your zsh shell
+END
