@@ -17,13 +17,10 @@ fi
 
 # Make sure we’re using the latest Homebrew.
 brew update
+brew cask install java
 
 # Install Java
 brew install \
  java \
  gradle \
  maven
-
-# Install Java8
-brew tap caskroom/versions
-brew cask install java8

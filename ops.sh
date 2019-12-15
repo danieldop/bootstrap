@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
-K8S_VERSION=1.12.7
-HELM_VERSION=2.13.1
+K8S_VERSION=1.14.8
+KOPS_VERSION=1.14.1
+HELM_VERSION=2.13.0
 
 # Install command-line tools using Homebrew.
 
@@ -25,17 +26,17 @@ brew update
 brew install terraform circleci go
 
 # Install k8s tools
-## Install kops v1.11.1
-curl -Lo# -s kops https://github.com/kubernetes/kops/releases/download/$K8S_VERSION/kops-darwin-amd64
+## Install kops
+curl -Lo kops https://github.com/kubernetes/kops/releases/download/$KOPS_VERSION/kops-darwin-amd64
 chmod +x ./kops
 sudo mv ./kops /usr/local/bin/
 
-## Install kubectl v1.11.1
-curl -LO# -s https://storage.googleapis.com/kubernetes-release/release/v$K8S_VERSION/bin/darwin/amd64/kubectl
+## Install kubectl
+curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v$K8S_VERSION/bin/darwin/amd64/kubectl
 chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 
-## Install helm v2.13.0
+## Install helm v2.13.1
 curl -LO -s https://storage.googleapis.com/kubernetes-helm/helm-v$HELM_VERSION-darwin-amd64.tar.gz
 tar -zxvf helm-v${HELM_VERSION}-darwin-amd64.tar.gz && rm helm-v${HELM_VERSION}-darwin-amd64.tar.gz
 sudo mv darwin-amd64/helm /usr/local/bin/helm
@@ -64,31 +65,7 @@ helm plugin install https://github.com/databus23/helm-diff --version master
 brew cask install osxfuse
 brew install datawire/blackbird/telepresence
 
-# Run sections based on command line arguments
-for ARG in "$@"
-do
-	if [[ ${ARG} == "zsh" ]] || [[ $ARG == "all" ]]; then
-		echo ""
-		echo "------------------------------"
-		echo "Install Server Development Tools."
-		echo "------------------------------"
-		echo ""
-		export RC_FILE=~/.zshrc
-
-		## kubectl zsh namespace prompt
-		brew tap superbrothers/zsh-kubectl-prompt
-		brew install zsh-kubectl-prompt
-
-	fi
-	if [[ ${ARG} == "bash" ]]; then
-		echo ""
-		echo "------------------------------"
-		echo "Install Web Development Tools."
-		echo "------------------------------"
-		echo ""
-		export RC_FILE=~/.bashrc
-	fi
-done
+export RC_FILE=~/.zshrc
 
 # Finish installation into bash env
 echo "" >> ${RC_FILE}
