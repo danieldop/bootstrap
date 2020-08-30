@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-K8S_VERSION=1.14.8
-KOPS_VERSION=1.14.1
+K8S_VERSION=1.15.11
 HELM_VERSION=2.13.0
 
 export RC_FILE=${HOME}/.zshrc
@@ -25,12 +24,6 @@ brew update
 
 # Install Ops tools
 brew install terraform circleci go
-
-# Install k8s tools
-## Install kops
-curl -Lo kops https://github.com/kubernetes/kops/releases/download/$KOPS_VERSION/kops-darwin-amd64
-chmod +x ./kops
-sudo mv ./kops /usr/local/bin/
 
 ## Install kubectl
 curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v$K8S_VERSION/bin/darwin/amd64/kubectl
@@ -87,5 +80,4 @@ source /usr/local/etc/zsh-kubectl-prompt/kubectl.zsh
 RPROMPT='%{$fg[red]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
 
 source <(kubectl completion zsh)  # setup autocomplete in zsh into the current shell
-echo "if [ $commands[kubectl] ]; then source <(kubectl completion zsh); fi" >> ~/.zshrc # add autocomplete permanently to your zsh shell
 END

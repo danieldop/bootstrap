@@ -139,14 +139,14 @@ brew cask install --appdir="/Applications" atom
 brew cask install --appdir="/Applications" virtualbox
 brew cask install --appdir="/Applications" macdown
 brew cask install --appdir="/Applications" postman
-brew cask install --appdir="/Applications" sourcetree
-brew cask install --appdir="/Applications" intellij-idea
+#brew cask install --appdir="/Applications" sourcetree
+#brew cask install --appdir="/Applications" intellij-idea
 
 
 brew cask install --appdir="/Applications" gitter
 
 # Misc casks
-brew cask install --appdir="/Applications" google-chrome
+#brew cask install --appdir="/Applications" google-chrome
 brew cask install --appdir="/Applications" slack
 brew cask install --appdir="/Applications" lastpass
 brew cask install --appdir="/Applications" muzzle
