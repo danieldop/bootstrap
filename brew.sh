@@ -100,7 +100,7 @@ brew install \
  git-flow \
  git-extras \
  hub \
- imagemagick --with-webp \
+ imagemagick \
  lua \
  lynx \
  p7zip \
