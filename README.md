@@ -29,40 +29,24 @@ If you're interested in automation, `bootstrap` provides a customizable [setup s
 
 **Since you probably don't want to install every section**, the `.dots` script supports command line arguments to run only specified sections.  Simply pass in the [scripts](#scripts) that you want to install.  Below are some examples.
 
-Run all:
+Run `osxprep.sh`, `brew.sh`, and `osx.sh`:
 ```bash
-./.dots all
+./.dots osxprep brew osx
 ```
 
-Run `bootstrap.sh`, `osxprep.sh`, `brew.sh`, and `osx.sh`:
+Run `osxprep.sh`, `brew.sh`, and `osx.sh`, and `datastores.sh`:
 ```bash
-./.dots bootstrap osxprep brew osx
-```
-
-Run `bootstrap.sh`, `osxprep.sh`, `brew.sh`, and `osx.sh`, `pydata.sh`, `aws.sh`, and `datastores.sh`:
-```bash
-./.dots bootstrap osxprep brew osx pydata aws datastores
-```
-
-#### Running without Git
-```bash
-curl -O https://raw.githubusercontent.com/danieldop/bootstrap/master/.dots && chown $(whoami): .dots && chmod +x .dots && ./.dots [Add ARGS Here]
+./.dots osxprep brew osx datastores
 ```
 
 #### Scripts
 
-* [.dots](https://github.com/danieldop/bootstrap/blob/master/.dots)
-    * Runs specified scripts
-* [bootstrap.sh](https://github.com/danieldop/bootstrap/blob/master/bootstrap.sh)
-    * Syncs dev-setup to your local home directory `~`
 * [osxprep.sh](https://github.com/danieldop/bootstrap/blob/master/osxprep.sh)
     * Updates OS X and installs Xcode command line tools
 * [brew.sh](https://github.com/danieldop/bootstrap/blob/master/brew.sh)
     * Installs common Homebrew formulae and apps
 * [osx.sh](https://github.com/danieldop/bootstrap/blob/master/osx.sh)
     * Sets up OS X defaults geared towards developers
-* [aws.sh](https://github.com/danieldop/bootstrap/blob/master/aws.sh)
-    * Sets up Spark, Hadoop MapReduce, and Amazon Web Services
 * [web.sh](https://github.com/danieldop/bootstrap/blob/master/web.sh)
     * Sets up JavaScript web development
 * [server.sh](https://github.com/danieldop/bootstrap/blob/master/server.sh)
