@@ -51,7 +51,8 @@ brew install \
  vim \
  grep \
  openssh \
- screen
+ screen \
+ bash
 
 # Install font tools.
 brew tap bramstein/webfonttools
@@ -111,6 +112,7 @@ brew install \
  speedtest_cli \
  ssh-copy-id \
  tree \
+ htop \
  webkit2png \
  zopfli \
  pkg-config \
@@ -140,7 +142,8 @@ brew cask install --appdir="/Applications" virtualbox
 brew cask install --appdir="/Applications" macdown
 brew cask install --appdir="/Applications" postman
 #brew cask install --appdir="/Applications" sourcetree
-#brew cask install --appdir="/Applications" intellij-idea
+brew cask install --appdir="/Applications" jetbrains-toolbox
+brew cask install --appdir="/Applications" sequel-ace
 
 
 brew cask install --appdir="/Applications" gitter
