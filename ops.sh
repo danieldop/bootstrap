@@ -23,7 +23,7 @@ fi
 brew update
 
 # Install Ops tools
-brew install terraform circleci go awscli awscli
+brew install terraform circleci go awscli
 
 ## Install kubectl
 curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v$K8S_VERSION/bin/darwin/amd64/kubectl
