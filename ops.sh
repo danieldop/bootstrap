@@ -58,7 +58,7 @@ brew install zsh-kubectl-prompt
 helm init --client-only
 helm plugin install https://github.com/hypnoglow/helm-s3.git
 helm plugin install https://github.com/mstrzele/helm-edit
-helm plugin install https://github.com/databus23/helm-diff --version master
+helm plugin install https://github.com/databus23/helm-diff --version v2.9.0+3
 
 ## Telepresence
 brew cask install osxfuse
