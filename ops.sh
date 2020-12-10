@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-K8S_VERSION=1.15.11
-HELM_VERSION=2.13.0
+K8S_VERSION=1.18.12
+HELM_VERSION=3.3.4
 
 export RC_FILE=${HOME}/.zshrc
 
@@ -31,10 +31,9 @@ chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 
 ## Install helm
-curl -LO -s https://storage.googleapis.com/kubernetes-helm/helm-v$HELM_VERSION-darwin-amd64.tar.gz
-tar -zxvf helm-v${HELM_VERSION}-darwin-amd64.tar.gz && rm helm-v${HELM_VERSION}-darwin-amd64.tar.gz
-sudo mv darwin-amd64/helm /usr/local/bin/helm
-rm -rf darwin-amd64
+curl -Lo get1_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get && chmod 700 ./get_helm.sh
+./get_helm.sh -v ${HELM_VERSION}
+helm version
 
 # Dependant non-pinned packages
 brew install stern kubectx
@@ -55,10 +54,9 @@ brew tap superbrothers/zsh-kubectl-prompt
 brew install zsh-kubectl-prompt
 
 ## Helm plugins
-helm init --client-only
-helm plugin install https://github.com/hypnoglow/helm-s3.git
 helm plugin install https://github.com/mstrzele/helm-edit
-helm plugin install https://github.com/databus23/helm-diff --version v2.9.0+3
+helm plugin install https://github.com/databus23/helm-diff --version 3.1.3
+helm plugin install https://github.com/hypnoglow/helm-s3.git --version 0.10.0
 
 ## Telepresence
 brew cask install osxfuse
