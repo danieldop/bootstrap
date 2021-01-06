@@ -138,14 +138,11 @@ brew cask install --appdir="~/Applications" pritunl # vpn
 # Development tool casks
 brew cask install --appdir="/Applications" sublime-text
 brew cask install --appdir="/Applications" atom
-brew cask install --appdir="/Applications" virtualbox
 brew cask install --appdir="/Applications" macdown
 brew cask install --appdir="/Applications" postman
 #brew cask install --appdir="/Applications" sourcetree
 brew cask install --appdir="/Applications" jetbrains-toolbox
 brew cask install --appdir="/Applications" sequel-ace
-
-
 brew cask install --appdir="/Applications" gitter
 
 # Misc casks
@@ -154,27 +151,5 @@ brew cask install --appdir="/Applications" slack
 brew cask install --appdir="/Applications" lastpass
 brew cask install --appdir="/Applications" muzzle
 
-# Install Docker, which requires virtualbox
-brew install docker
-brew install boot2docker
-
-# Install developer friendly quick look plugins; see https://github.com/sindresorhus/quick-look-plugins
-brew cask install \
- qlcolorcode \
- qlstephen \
- qlmarkdown \
- quicklook-json \
- qlimagesize \
- webpquicklook \
- suspicious-package \
- quicklookase \
- qlvideo
-
 # Remove outdated versions from the cellar.
 brew cleanup
-
-## Apply DotFiles
-#for file in ~/.{path,exports,aliases,functions,extra}; do
-#	[[ -r "$file" ]] && [[ -f "$file" ]] && source "$file";
-#done;
-#unset file;
