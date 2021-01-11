@@ -3,7 +3,7 @@ Bootstrap
 
 ## Motivation
 
-Setting up a new developer machine can be an **ad-hoc, manual, and time-consuming** process.  `bootstrap` aims to **simplify** the process with **easy-to-understand instructions** and **dotfiles/scripts** to **automate the setup** of the following:
+Setting up a new developer machine can be an **ad-hoc, manual, and time-consuming** process.  `bootstrap` aims to **simplify** the process with **easy-to-understand instructions** :
 
 ### But...I Don't Need All These Tools!
 
@@ -12,7 +12,7 @@ Setting up a new developer machine can be an **ad-hoc, manual, and time-consumin
 If you're interested in automation, `bootstrap` provides a customizable [setup script](#single-setup-script).  There's really no one-size-fits-all solution for developers so you're encouraged to make tweaks to suit your needs.
 
 ### Sections Summary
-* Section 1 contains the dotfiles/scripts and instructions to set up your system.
+* Section 1 contains the scripts and instructions to set up your system.
 * Sections 2 through 7 detail more information about installation, configuration, and usage for topics in Section 1.
 
 ## Section 1: Installation
@@ -25,18 +25,42 @@ If you're interested in automation, `bootstrap` provides a customizable [setup s
 
     $ git clone https://github.com/danieldop/bootstrap.git && cd bootstrap
 
-##### Run the .dots Script with Command Line Arguments
+##### Run scripts using command line
 
-**Since you probably don't want to install every section**, the `.dots` script supports command line arguments to run only specified sections.  Simply pass in the [scripts](#scripts) that you want to install.  Below are some examples.
+**Since you probably don't want to install every section**, you can just run each script separately. Below are some examples.
 
-Run `osxprep.sh`, `brew.sh`, and `osx.sh`:
+Run `zsh.sh`, `osxprep.sh`, `brew.sh`, and `osx.sh` - common libraries:
 ```bash
-./.dots osxprep brew osx
+sh zsh.sh
+sh osxprep.sh
+sh brew.sh
+sh osx.sh
 ```
 
 Run `osxprep.sh`, `brew.sh`, and `osx.sh`, and `datastores.sh`:
 ```bash
-./.dots osxprep brew osx datastores
+sh zsh.sh
+sh ops.sh
+sh brew.sh
+sh datastores.sh
+```
+
+Scripts geared towards Front-End engineer: 
+```bash
+sh zsh.sh
+sh osxprep.sh
+sh brew.sh
+sh ops.sh
+sh web.sh
+```
+
+Scripts geared towards Back-End engineer: 
+```bash
+sh zsh.sh
+sh osxprep.sh
+sh brew.sh
+sh ops.sh
+sh server.sh
 ```
 
 #### Scripts
@@ -53,13 +77,12 @@ Run `osxprep.sh`, `brew.sh`, and `osx.sh`, and `datastores.sh`:
     * Sets up Java development
 * [ops.sh](https://github.com/danieldop/bootstrap/blob/master/ops.sh)
     * Sets up K8s & Helm development
+* [datastores.sh](https://github.com/danieldop/bootstrap/blob/master/datastores.sh)
+    * Installs MySQL, MongoDB, Redis, ElasticSearch and DB IDEs - Sequel Pro & RoboMongo
 
 **Notes:**
 
-* `.dots` will initially prompt you to enter your password.
-* `.dots` might ask you to re-enter your password at certain stages of the installation.
-* If OS X updates require a restart, simply run `.dots` again to resume where you left off.
 * When installing the Xcode command line tools, a dialog box will confirm installation.
     * Once Xcode is installed, follow the instructions on the terminal to continue.
-* `.dots` runs `brew.sh`, which takes awhile to complete as some formulae need to be installed from source.
-* **When `.dots` completes, be sure to restart your computer for all updates to take effect.**
+* `brew.sh`, which takes awhile to complete as some formulae need to be installed from source.
+* **When scripts completes, be sure to restart your computer for all updates to take effect.**
