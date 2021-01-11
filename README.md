@@ -11,12 +11,6 @@ Setting up a new developer machine can be an **ad-hoc, manual, and time-consumin
 
 If you're interested in automation, `bootstrap` provides a customizable [setup script](#single-setup-script).  There's really no one-size-fits-all solution for developers so you're encouraged to make tweaks to suit your needs.
 
-### Sections Summary
-* Section 1 contains the scripts and instructions to set up your system.
-* Sections 2 through 7 detail more information about installation, configuration, and usage for topics in Section 1.
-
-## Section 1: Installation
-
 ### Single Setup Script
 
 #### Running with Git
