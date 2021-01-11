@@ -59,7 +59,7 @@ helm plugin install https://github.com/databus23/helm-diff --version 3.1.3
 helm plugin install https://github.com/hypnoglow/helm-s3.git --version 0.10.0
 
 ## Telepresence
-brew cask install osxfuse
+brew install --cask osxfuse
 brew install datawire/blackbird/telepresence
 
 ## kubectl zsh namespace prompt

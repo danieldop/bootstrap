@@ -129,27 +129,27 @@ brew install \
 #brew link libxslt --force
 
 # Core casks
-brew cask install --appdir="/Applications" alfred
-brew cask install --appdir="~/Applications" iterm2
-brew cask install --appdir="~/Applications" spotify
-brew cask install --appdir="~/Applications" zoom
-brew cask install --appdir="~/Applications" pritunl # vpn
+brew install --cask --appdir="/Applications" alfred
+brew install --cask --appdir="~/Applications" iterm2
+brew install --cask --appdir="~/Applications" spotify
+brew install --cask --appdir="~/Applications" zoom
+brew install --cask --appdir="~/Applications" pritunl # vpn
 
 # Development tool casks
-brew cask install --appdir="/Applications" sublime-text
-brew cask install --appdir="/Applications" atom
-brew cask install --appdir="/Applications" macdown
-brew cask install --appdir="/Applications" postman
-#brew cask install --appdir="/Applications" sourcetree
-brew cask install --appdir="/Applications" jetbrains-toolbox
-brew cask install --appdir="/Applications" sequel-ace
-brew cask install --appdir="/Applications" gitter
+brew install --cask --appdir="/Applications" sublime-text
+brew install --cask --appdir="/Applications" atom
+brew install --cask --appdir="/Applications" macdown
+brew install --cask --appdir="/Applications" postman
+#brew install --cask --appdir="/Applications" sourcetree
+brew install --cask --appdir="/Applications" jetbrains-toolbox
+brew install --cask --appdir="/Applications" sequel-ace
+brew install --cask --appdir="/Applications" gitter
 
 # Misc casks
-#brew cask install --appdir="/Applications" google-chrome
-brew cask install --appdir="/Applications" slack
-brew cask install --appdir="/Applications" lastpass
-brew cask install --appdir="/Applications" muzzle
+#brew install --cask --appdir="/Applications" google-chrome
+brew install --cask --appdir="/Applications" slack
+brew install --cask --appdir="/Applications" lastpass
+brew install --cask --appdir="/Applications" muzzle
 
 # Remove outdated versions from the cellar.
 brew cleanup
