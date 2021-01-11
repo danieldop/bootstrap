@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 K8S_VERSION=1.18.12
-HELM_VERSION=3.3.4
+HELM_VERSION=v3.3.4
 
 export RC_FILE=${HOME}/.zshrc
 
@@ -31,7 +31,7 @@ chmod +x ./kubectl
 sudo mv ./kubectl /usr/local/bin/kubectl
 
 ## Install helm
-curl -Lo get1_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get && chmod 700 ./get_helm.sh
+curl -Lo get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get && chmod 700 ./get_helm.sh
 ./get_helm.sh -v ${HELM_VERSION}
 helm version
 
@@ -75,7 +75,7 @@ tee -a ${RC_FILE} << END
 # kubectl-prompt
 autoload -U colors; colors
 source /usr/local/etc/zsh-kubectl-prompt/kubectl.zsh
-RPROMPT='%{$fg[red]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
+RPROMPT="%{\$fg[red]%}(\$ZSH_KUBECTL_PROMPT)%{\$reset_color%}"
 
 source <(kubectl completion zsh)  # setup autocomplete in zsh into the current shell
 END
