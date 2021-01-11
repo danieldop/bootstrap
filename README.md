@@ -76,7 +76,7 @@ sh server.sh
 
 **Notes:**
 
-* When installing the Xcode command line tools, a dialog box will confirm installation.
+* When installing the Xcode command line tools, a dialog box will confirm the installation.
     * Once Xcode is installed, follow the instructions on the terminal to continue.
-* `brew.sh`, which takes awhile to complete as some formulae need to be installed from source.
-* **When scripts completes, be sure to restart your computer for all updates to take effect.**
+* `brew.sh`, which takes a while to complete as some formulae need to be installed from source.
+* **When scripts complete, be sure to restart your computer for all updates to take effect.**
