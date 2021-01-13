@@ -28,7 +28,7 @@ brew install elasticsearch
 # Install Sequel Pro and RoboMongo
 # Install Cask
 brew install caskroom/cask/brew-cask
-brew cask install --appdir="/Applications" sequel-pro robo-3t
+brew install --cask --appdir="/Applications" sequel-pro robo-3t
 
 # Remove outdated versions from the cellar.
 brew cleanup
