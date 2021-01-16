@@ -75,7 +75,7 @@ tee -a ${RC_FILE} << END
 # kubectl-prompt
 autoload -U colors; colors
 source /usr/local/etc/zsh-kubectl-prompt/kubectl.zsh
-RPROMPT="%{\$fg[red]%}(\$ZSH_KUBECTL_PROMPT)%{\$reset_color%}"
+RPROMPT='%{\$fg[red]%}(\$ZSH_KUBECTL_PROMPT)%{\$reset_color%}'
 
 source <(kubectl completion zsh)  # setup autocomplete in zsh into the current shell
 END
