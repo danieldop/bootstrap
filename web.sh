@@ -22,7 +22,3 @@ brew install node@8
 
 # Remove outdated versions from the cellar.
 brew cleanup
-
-npm install -g grunt-cli
-npm install -g jshint
-npm install -g serverless
