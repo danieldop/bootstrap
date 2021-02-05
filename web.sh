@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Install command-line tools using Homebrew.
+# Install tooling needed for Front End developers.
 
 # Ask for the administrator password upfront.
 sudo -v
@@ -8,17 +8,21 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until the script has finished.
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-# Check for Homebrew,
-# Install if we don't have it
-if test ! $(which brew); then
-  echo "Installing homebrew..."
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-fi
+# Download and install nvm - Node version manager
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
 
-# Make sure we’re using the latest Homebrew.
-brew update
+# Run nvm
+. ~/.nvm/nvm.sh
 
-brew install node@8
+# Install and use lts Node release
+nvm install --lts
 
-# Remove outdated versions from the cellar.
-brew cleanup
+echo "\nLatest Node lts released installed."
+
+echo "
+Note!
+
+Please switch to propper Node version when starting working on frontend service.
+Currently it is explicitly set in Dockerfile in each service.
+.nmvrc files would be added for easy one line version switch in nearest future.
+"
