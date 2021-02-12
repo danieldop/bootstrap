@@ -29,7 +29,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # Install lts release of Node
-nvm install --lts
+nvm install 12.6.2
 
 # Adding all nvm related variables to .zshrc
 # If we add them in "NVM setup" step and "source .zshrc" the script will crash.
