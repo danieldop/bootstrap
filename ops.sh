@@ -75,7 +75,24 @@ tee -a ${RC_FILE} << END
 # kubectl-prompt
 autoload -U colors; colors
 source /usr/local/etc/zsh-kubectl-prompt/kubectl.zsh
-RPROMPT="%{\$fg[red]%}(\$ZSH_KUBECTL_PROMPT)%{\$reset_color%}"
+function right_prompt() {
+  local color="white"
+
+  if [[ $ZSH_KUBECTL_PROMPT == *"blue"* ]]; then
+    color=blue
+  fi
+
+  if [[ $ZSH_KUBECTL_PROMPT == *"green"* ]]; then
+    color=green
+  fi  
+
+  if [[ "$ZSH_KUBECTL_USER" =~ "admin" ]]; then
+    color=red
+  fi
+
+  echo "%{$fg[$color]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}"
+}
+RPROMPT='$(right_prompt)'
 
 source <(kubectl completion zsh)  # setup autocomplete in zsh into the current shell
 END
