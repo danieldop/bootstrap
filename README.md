@@ -57,6 +57,15 @@ sh ops.sh
 sh server.sh
 ```
 
+Scripts geared towards Mobile engineer: 
+```bash
+sh zsh.sh
+sh osxprep.sh
+sh brew.sh
+sh ops.sh
+sh mobile.sh
+```
+
 #### Scripts
 
 * [osxprep.sh](https://github.com/danieldop/bootstrap/blob/master/osxprep.sh)
@@ -73,9 +82,11 @@ sh server.sh
     * Sets up K8s & Helm development
 * [datastores.sh](https://github.com/danieldop/bootstrap/blob/master/datastores.sh)
     * Installs MySQL, MongoDB, Redis, ElasticSearch and DB IDEs - Sequel Pro & RoboMongo
+* [mobile.sh](https://github.com/danieldop/bootstrap/blob/master/mobile.sh)
+    * Installs iOS Env|Android Env|React-Native Env
 
 **Notes:**
-
+* Before installing mobile.sh please make sure to install Xcode from AppStore or Developer poortal first.
 * When installing the Xcode command line tools, a dialog box will confirm the installation.
     * Once Xcode is installed, follow the instructions on the terminal to continue.
 * `brew.sh`, which takes a while to complete as some formulae need to be installed from source.
