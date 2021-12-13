@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Install command-line tools using Homebrew.
+# Install nvm and Node using Homebrew.
 
 # Ask for the administrator password upfront.
 sudo -v
@@ -18,11 +18,27 @@ fi
 # Make sure we’re using the latest Homebrew.
 brew update
 
-brew install node@8
+# Install and setup nvm - Node Version Manager
+brew install nvm
+
+mkdir ~/.nvm
+
+# NVM setup
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+# Install lts release of Node
+nvm install 12.6.2
+
+# Adding all nvm related variables to .zshrc
+# If we add them in "NVM setup" step and "source .zshrc" the script will crash.
+echo "
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"" >> ~/.zshrc
 
 # Remove outdated versions from the cellar.
 brew cleanup
 
-npm install -g grunt-cli
-npm install -g jshint
-npm install -g serverless
+exec zsh
