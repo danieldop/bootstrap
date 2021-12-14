@@ -45,6 +45,7 @@ brew "zplug"
 brew "zsh"
 brew "htop"
 brew "stern"
+brew "vegeta"
 
 brew "node"
 brew "n"

@@ -33,6 +33,3 @@
 	rebase = false
 [init]
 	defaultBranch = main
-[user]
-	name = Daniel Doppelt
-	email = daniel.doppelt@gmail.com

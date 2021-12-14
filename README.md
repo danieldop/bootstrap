@@ -3,91 +3,50 @@ Bootstrap
 
 ## Motivation
 
-Setting up a new developer machine can be an **ad-hoc, manual, and time-consuming** process.  `bootstrap` aims to **simplify** the process with **easy-to-understand instructions** :
+Setting up a new developer machine can be an **ad-hoc, manual, and time-consuming** process.
+`bootstrap` aims to **simplify** the process through a highly automatic and autonomous process.
 
-### But...I Don't Need All These Tools!
+>**`bootstrap` is geared to be an organized *reference* of various developer tools used by me.**
 
-**`bootstrap` is geared to be more of an organized *reference* of various developer tools.**
+An opinionated list of tools, languages, shells and .dotfiles I use to configure my workstation.
+This purpose of this repository is to host a tool to bootstrap my machine from scratch.
+It ensures my machine is ready for backend and frontend development on kubernetes based production environments.
 
-If you're interested in automation, `bootstrap` provides a customizable [setup script](#single-setup-script).  There's really no one-size-fits-all solution for developers so you're encouraged to make tweaks to suit your needs.
+> I've been using a form of this script for over 10 years now. This is truly more about the journey than the destination!
 
-### Single Setup Script
+## Getting Started
 
-#### Running with Git
+To run the script just hit: `curl -L https://git.io/JD0YW | sh`
 
-##### Clone the Repo
+>Before you get started make sure you give full disk access permission to your terminal (for writing macos .dotfiles).
+>`System Preferences -> Privacy -> Full Disk Access`.
 
-    $ git clone https://github.com/danieldop/bootstrap.git && cd bootstrap
+This will execute [run.sh](run.sh) which will fetch this repo and then execute the [bootstrap.sh](bootstrap.sh) script.
+From there on all sections of this script will be executed.
 
-##### Run scripts using command line
+>This script is intended for `amd64` based MacOS running computers.
 
-**Since you probably don't want to install every section**, you can just run each script separately. Below are some examples.
+## Functionality Overview
 
-Run `zsh.sh`, `osxprep.sh`, `brew.sh`, and `osx.sh` - common libraries:
-```bash
-sh zsh.sh
-sh osxprep.sh
-sh brew.sh
-sh osx.sh
-```
+The script is structured by means modules (directories) bundled together in functionality which is then executed by a
+function call from within [bootstrap.sh](bootstrap.sh). The three main buckets are:
 
-Run `osxprep.sh`, `brew.sh`, and `osx.sh`, and `datastores.sh`:
-```bash
-sh zsh.sh
-sh ops.sh
-sh brew.sh
-sh datastores.sh
-```
+### MacOs
+- Updates the OS (optional)
+- Installs OS level dependencies like xcode-cli
+- Applies OS level configurations (look and feel)
+### Brew
+- Installs Brew
+- Installs Casks and Bottles
+- Configures the tools installed by Brew
+### Dotfiles
+- Defines `zsh` as the default shell
+- Configures the shell through dotfiles
+- Define aliases and exports
+- Configures shell tools through dotfiles
 
-Scripts geared towards Front-End engineer: 
-```bash
-sh zsh.sh
-sh osxprep.sh
-sh brew.sh
-sh ops.sh
-sh web.sh
-```
+## Issues
+Further improvements I'm planning to implement:
 
-Scripts geared towards Back-End engineer: 
-```bash
-sh zsh.sh
-sh osxprep.sh
-sh brew.sh
-sh ops.sh
-sh server.sh
-```
-
-Scripts geared towards Mobile engineer: 
-```bash
-sh zsh.sh
-sh osxprep.sh
-sh brew.sh
-sh ops.sh
-sh mobile.sh
-```
-
-#### Scripts
-
-* [osxprep.sh](https://github.com/danieldop/bootstrap/blob/master/osxprep.sh)
-    * Updates OS X and installs Xcode command line tools
-* [brew.sh](https://github.com/danieldop/bootstrap/blob/master/brew.sh)
-    * Installs common Homebrew formulae and apps
-* [osx.sh](https://github.com/danieldop/bootstrap/blob/master/osx.sh)
-    * Sets up OS X defaults geared towards developers
-* [web.sh](https://github.com/danieldop/bootstrap/blob/master/web.sh)
-    * Sets up JavaScript web development
-* [server.sh](https://github.com/danieldop/bootstrap/blob/master/server.sh)
-    * Sets up Java development
-* [ops.sh](https://github.com/danieldop/bootstrap/blob/master/ops.sh)
-    * Sets up K8s & Helm development
-* [datastores.sh](https://github.com/danieldop/bootstrap/blob/master/datastores.sh)
-    * Installs MySQL, MongoDB, Redis, ElasticSearch and DB IDEs - Sequel Pro & RoboMongo
-* [mobile.sh](https://github.com/danieldop/bootstrap/blob/master/mobile.sh)
-    * Installs iOS Env|Android Env|React-Native Env
-
-**Notes:**
-* Before installing mobile.sh please make sure to install Xcode from AppStore or Developer poortal first.
-* When installing the Xcode command line tools, a dialog box will confirm the installation.
-    * Once Xcode is installed, follow the instructions on the terminal to continue.
-* `brew.sh`, which takes a while to complete as some formulae need to be installed from source.
-* **When scripts complete, be sure to restart your computer for all updates to take effect.**
+- Collaboration
+- Customization
