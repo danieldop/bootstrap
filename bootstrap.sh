@@ -63,7 +63,7 @@ printf "\n"
 
 printf "== Setting zsh as default shell"
 printf "\n"
-chsh -s $(which zsh)
+chsh -s "$(which zsh)"
 
 printf "== Setting Python to 3.10"
 printf "\n"
@@ -77,9 +77,9 @@ printf "\n"
 yarn global add n 1>/dev/null
 # make cache folder (if missing) and take ownership
 sudo mkdir -p /usr/local/n
-sudo chown -R $(whoami) /usr/local/n
+sudo chown -R "$(whoami)" /usr/local/n
 # take ownership of Node.js install destination folders
-sudo chown -R $(whoami) /usr/local/bin /usr/local/lib /usr/local/include /usr/local/share
+sudo chown -R "$(whoami) "/usr/local/bin /usr/local/lib /usr/local/include /usr/local/share
 # install and use node lts
 n lts
 
