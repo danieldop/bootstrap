@@ -24,7 +24,7 @@ To run the script just hit: `curl -L https://git.io/JD0YW | sh`
 This will execute [run.sh](run.sh) which will fetch this repo and then execute the [bootstrap.sh](bootstrap.sh) script.
 From there on all sections of this script will be executed.
 
->This script is intended for `amd64` based MacOS running computers.
+>This script is intended for `arm64` based MacOS running computers.
 
 ## Functionality Overview
 
