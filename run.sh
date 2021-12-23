@@ -1,5 +1,5 @@
 if type git > /dev/null; then
-    git clone git@github.com:danieldop/bootstrap.git ~/bootstrap
+    git clone https://github.com/danieldop/bootstrap.git ~/bootstrap
     chmod +x ~/bootstrap
     cd ~/bootstrap
     ./bootstrap.sh
