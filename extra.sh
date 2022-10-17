@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#printf "== Installing extra shell tools\n"
-#sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+printf "== Installing extra shell tools\n"
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 printf "== Installing helm plugins\n"
 helm plugin install https://github.com/f3lan/helm-diff
