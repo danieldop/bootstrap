@@ -33,6 +33,7 @@ brew "htop"
 brew "stern"
 brew "vegeta"
 brew "starship"
+brew "fzf"
 
 brew "node"
 brew "rust"
