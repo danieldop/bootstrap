@@ -57,6 +57,7 @@ brew "serverless"
 brew "datawire/blackbird/telepresence"
 brew "kns"
 
+cask "warp"
 cask "google-cloud-sdk"
 cask "alfred"
 cask "google-chrome"
