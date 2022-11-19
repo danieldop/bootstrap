@@ -27,8 +27,8 @@
 [pager]
   branch = false
 [user]
-	name = Sara Pope
-	email = sara@thepope.dev
+	name = Daniel Doppelt
+	email = daniel.doppelt@gmail.com
 [pull]
 	rebase = false
 [init]

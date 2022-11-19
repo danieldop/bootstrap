@@ -27,6 +27,16 @@ create_dirs() {
     done
 }
 
+install_rosetta() {
+if ! xcode-select --print-path &> /dev/null; then
+xcode-select --install &> /dev/null
+
+until xcode-select --print-path &> /dev/null; do
+sleep 5
+done
+fi
+}
+
 install_xcode() {
     if ! xcode-select --print-path &> /dev/null; then
         xcode-select --install &> /dev/null
@@ -52,13 +62,17 @@ printf "== Installing Homebrew packages"
 printf "\n"
 install_brew
 
-# printf "== Installing extra packages"
-# printf "\n"
-# chmod +x extra.sh
-# ./extra.sh
+ printf "== Installing extra packages"
+ printf "\n"
+ chmod +x extra.sh
+ ./extra.sh
 
-# printf "== Setting macOS preferences"
-# printf "\n"
-# ./macos/.macos
+ printf "== Setting macOS preferences"
+ printf "\n"
+ ./macos/.macos
+
+printf "== Stowing dotfiles"
+printf "\n"
+stow fzf zsh git
 
 printf "!! Done!"

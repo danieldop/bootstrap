@@ -23,3 +23,11 @@ export PYTHONIOENCODING='UTF-8'
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --smart-case --glob "!.git/*" --glob "!node_modules/*"'
+
+# starship
+export STARSHIP_CONFIG=$HOME/.starship.toml
+
+# graalvm
+export GRAALVM_HOME=/Library/Java/JavaVirtualMachines/graalvm-ce-java19-22.3.0/Contents/Home/
+export PATH=${GRAALVM_HOME}/bin:$PATH
+export JAVA_HOME=${GRAALVM_HOME}
