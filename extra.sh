@@ -1,5 +1,7 @@
 #!/bin/bash
 
+ln -sf $HOME/bootstrap/.config $HOME/
+
 printf "== Configuring Warp\n"
 ln -sf $HOME/bootstrap/.warp $HOME/
 

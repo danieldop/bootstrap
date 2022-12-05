@@ -73,6 +73,6 @@ install_brew
 
 printf "== Stowing dotfiles"
 printf "\n"
-stow fzf zsh git
+stow fzf zsh git fleet 
 
 printf "!! Done!"
