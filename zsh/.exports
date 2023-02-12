@@ -17,38 +17,14 @@ export GPG_TTY=$(tty)
 # brew
 PATH=$PATH:/opt/homebrew/bin
 
-# set rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
 # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
 export PYTHONIOENCODING='UTF-8'
-
-# npm global
-export NPM_PACKAGES="/usr/local/npm_packages"
-export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
-export PATH="$NPM_PACKAGES/bin:$PATH"
-
-# yarn
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --smart-case --glob "!.git/*" --glob "!node_modules/*"'
 
-# z
-. ~/z.sh
-
-# ripgrep
-export RIPGREP_CONFIG_PATH=$HOME/.rgrc
-
-# linux utils
-export PATH="/usr/local/opt/util-linux/bin:$PATH"
-export PATH="/usr/local/opt/util-linux/sbin:$PATH"
-
-# pyenv
-export PYENV_SHELL=zsh
-command pyenv rehash 2>/dev/null
-
-# direnv
-eval "$(direnv hook zsh)"
+# graalvm
+export GRAALVM_HOME=/Library/Java/JavaVirtualMachines/graalvm-ce-java17-22.3.1/Contents/Home/
+export PATH=${GRAALVM_HOME}/bin:$PATH
+export JAVA_HOME=${GRAALVM_HOME}
