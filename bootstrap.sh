@@ -52,17 +52,13 @@ printf "== Installing Homebrew packages"
 printf "\n"
 install_brew
 
- printf "== Installing extra packages"
- printf "\n"
- chmod +x extra.sh
- ./extra.sh
-
-# printf "== Setting macOS preferences"
-# printf "\n"
-# ./macos/.macos
+printf "== Installing extra packages"
+printf "\n"
+chmod +x extra.sh
+./extra.sh
 
 printf "== Stowing dotfiles"
 printf "\n"
-stow fzf zsh git fleet 
+stow fzf zsh git fleet
 
 printf "!! Done!"

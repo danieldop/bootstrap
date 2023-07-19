@@ -41,7 +41,7 @@ show_always = true
 [hostname]
 ssh_only = false
 format = "on [$hostname](bold yellow) "
-disabled = false
+disabled = true
 
 [directory]
 truncation_length = 1
@@ -74,7 +74,7 @@ renamed = "襁 "
 deleted = " "
 
 [kubernetes]
-format = 'via [ﴱ $context\($namespace\)](bold purple) '
+format = 'on [$context\($namespace\)](bold purple) '
 disabled = false
 
 # (deactivated because of no space left)
