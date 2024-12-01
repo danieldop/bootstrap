@@ -6,6 +6,7 @@ cask_args appdir: "/Applications"
 
 brew "jq"
 brew "yq"
+brew "stow"
 
 # lang
 brew "node"
