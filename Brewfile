@@ -1,4 +1,6 @@
 tap "hashicorp/tap"
+tap "blendle/blendle"
+tap "quarkusio/tap"
 
 cask_args appdir: "/Applications"
 
@@ -16,14 +18,15 @@ brew "maven"
 
 # cli
 brew "helm"
-brew "kubernetes-cli"
+brew "kubectl"
 brew "kubectx"
 brew "serverless"
 brew "zsh-kubectl-prompt"
 brew "kns"
 brew "vegeta"
-brew "hashicorp/tap/terraform"
+brew "terraform"
 brew "starship"
+brew "quarkus"
 
 # apps
 cask "jetbrains-toolbox"
@@ -39,6 +42,10 @@ cask "miro"
 cask "whatsapp"
 cask "docker"
 cask "graalvm-jdk"
+cask "ray"
+cask "clocker"
+cask "notion"
+cask "notion-calendar"
 
 # fun stuff
 cask "steam"
