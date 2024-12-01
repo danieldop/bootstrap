@@ -38,7 +38,7 @@ cask "notion"
 cask "miro"
 cask "whatsapp"
 cask "docker"
-cask "graalvm/tap/graalvm-ce-java17"
+cask "graalvm-jdk"
 
 # fun stuff
 cask "steam"
