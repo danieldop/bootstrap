@@ -1,18 +1,30 @@
 #!/bin/bash
 
+install_xcode() {
+    if ! xcode-select --print-path &> /dev/null; then
+        xcode-select --install &> /dev/null
+        until xcode-select --print-path &> /dev/null; do
+            sleep 5
+        done
+    fi
+}
+
+install_rosetta() {
+	softwareupdate --install-rosetta --agree-to-license
+}
+
 install_brew() {
     if ! command -v "brew" &> /dev/null; then
         printf "Homebrew not found, installing."
-        # install homebrew
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-        # set path
-        eval "$(/opt/homebrew/bin/brew shellenv)"
+				echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> "$HOME/.zprofile"
+				eval "$(/opt/homebrew/bin/brew shellenv)"
     fi
+}
 
-    sudo softwareupdate --install-rosetta
-
-    printf "Installing homebrew packages..."
+install_brew_packages() {
     brew bundle
+    brew cleanup
 }
 
 create_dirs() {
@@ -27,38 +39,25 @@ create_dirs() {
     done
 }
 
-install_xcode() {
-    if ! xcode-select --print-path &> /dev/null; then
-        xcode-select --install &> /dev/null
-
-        until xcode-select --print-path &> /dev/null; do
-            sleep 5
-        done
-    fi
-}
-
 # Keep-alive: update existing `sudo` time stamp until the script has finished.
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
-printf "== Creating directories"
-printf "\n"
+printf "== Creating directories \n"
 create_dirs
 
-printf "== Installing Xcode Command Line Tools"
-printf "\n"
+printf "== Installing Xcode Command Line Tools \n"
 install_xcode
 
-printf "== Installing Homebrew packages"
-printf "\n"
+printf "== Installing Rosetta 2 \n"
+install_rosetta
+
+printf "== Installing Homebrew \n"
 install_brew
 
-printf "== Installing extra packages"
-printf "\n"
-chmod +x extra.sh
-./extra.sh
+printf "== Installing Homebrew Packages \n"
+install_brew_packages
 
-printf "== Stowing dotfiles"
-printf "\n"
-stow fzf git vim zsh z
+printf "== Stowing dotfiles \n"
+stow  git vim zsh
 
 printf "Done!"

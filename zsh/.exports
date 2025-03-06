@@ -15,11 +15,8 @@ export LANG="en_US"
 export GPG_TTY=$(tty)
 
 # brew
-PATH=$PATH:/opt/homebrew/bin
-
-# set rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+#PATH=$PATH:/opt/homebrew/bin
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Make Python use UTF-8 encoding for output to stdin, stdout, and stderr.
 export PYTHONIOENCODING='UTF-8'
@@ -28,16 +25,6 @@ export PYTHONIOENCODING='UTF-8'
 export NPM_PACKAGES="/usr/local/npm_packages"
 export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 export PATH="$NPM_PACKAGES/bin:$PATH"
-
-# yarn
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-
-# fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --smart-case --glob "!.git/*" --glob "!node_modules/*"'
-
-# z
-. ~/z.sh
 
 # ripgrep
 export RIPGREP_CONFIG_PATH=$HOME/.rgrc
@@ -50,5 +37,5 @@ export PATH="/usr/local/opt/util-linux/sbin:$PATH"
 export PYENV_SHELL=zsh
 command pyenv rehash 2>/dev/null
 
-# direnv
-eval "$(direnv hook zsh)"
+# add Jetbrains scripts
+export PATH="$PATH:/Users/daniel/Library/Application Support/JetBrains/Toolbox/scripts"
