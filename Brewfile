@@ -1,4 +1,5 @@
 tap "hashicorp/tap"
+tap "quarkusio/tap"
 
 cask_args appdir: "/Applications"
 
